@@ -50,8 +50,9 @@ static int extfuse_run_prog(struct bpf_prog *eprog, struct extfuse_req *ereq)
 
 int extfuse_request_send(struct fuse_conn *fc, struct fuse_req *req)
 {
-	ssize_t ret = -ENOSYS;
 	struct extfuse_data *data = (struct extfuse_data *)fc->fc_priv;
+	ssize_t ret = -ENOSYS;
+
 	if (data) {
 		struct extfuse_req ereq;
 		fuse_to_extfuse_req(req, &ereq);
@@ -120,11 +121,11 @@ int extfuse_load_prog(struct fuse_conn *fc, int fd)
 BPF_CALL_4(bpf_extfuse_read_args, void *, src, u32, type, void *, dst, size_t,
 	   size)
 {
-	int ret = -EINVAL;
-	const void *inptr = NULL;
-	struct extfuse_req *req= (struct extfuse_req *)src;
+	struct extfuse_req *req = (struct extfuse_req *)src;
 	unsigned num_in_args = req->in.numargs;
 	unsigned num_out_args = req->out.numargs;
+	int ret = -EINVAL;
+	const void *inptr = NULL;
 
 	switch (type) {
 	case OPCODE:
