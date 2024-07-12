@@ -5574,6 +5574,19 @@ union bpf_attr {
  *		0 on success.
  *
  *		**-ENOENT** if the bpf_local_storage cannot be found.
+ *
+ * long bpf_extfuse_read_args(void *src, u32 type, void *dst, size_t size)
+ *	Description
+ *		Attempts to copy the requested src field to dst.
+ *	Return
+ *		0 on success.
+ *		**-EINVAL** if arguments are invalid.
+ *
+ * long bpf_extfuse_write_args(void *dst, u32 type, const void *src, u32 size)
+ *	Description
+ *		Attempts to copy the src field to dst.
+ *	Return
+ *		0 on success.
  */
 #define ___BPF_FUNC_MAPPER(FN, ctx...)			\
 	FN(unspec, 0, ##ctx)				\
