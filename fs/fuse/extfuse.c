@@ -223,7 +223,7 @@ BPF_CALL_4(bpf_extfuse_read_args, void *, src, u32, type, void *, dst, size_t,
 	return ret;
 }
 
-static const struct bpf_func_proto bpf_extfuse_read_args_proto = {
+const struct bpf_func_proto bpf_extfuse_read_args_proto = {
 	.func		= bpf_extfuse_read_args,
 	.gpl_only	= true,
 	.ret_type	= RET_INTEGER,
@@ -271,7 +271,7 @@ BPF_CALL_4(bpf_extfuse_write_args, void *, dst, u32, type, const void *, src,
 	return ret;
 }
 
-static const struct bpf_func_proto bpf_extfuse_write_args_proto = {
+const struct bpf_func_proto bpf_extfuse_write_args_proto = {
 	.func		= bpf_extfuse_write_args,
 	.gpl_only	= true,
 	.ret_type	= RET_INTEGER,
